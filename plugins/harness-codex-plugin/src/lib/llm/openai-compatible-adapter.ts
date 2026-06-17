@@ -14,7 +14,13 @@ export class OpenAICompatibleLLMAdapter implements LLMAdapter {
 
   private async generateJsonInternal(request: LLMJsonRequest): Promise<LLMJsonResponse> {
     const requestedAt = new Date().toISOString();
-    const baseURL = normalizeBaseUrl(request.config.baseURL?.trim() || readEnvValue("DEFAULT_LLM_BASE_URL", "LLM_BASE_URL") || "https://api.openai.com/v1");
+    const baseURL = normalizeBaseUrl(request.config.baseURL?.trim() || readEnvValue("DEFAULT_LLM_BASE_URL", "LLM_BASE_URL") || "");
+    if (!baseURL) {
+      throw new Error("LLM base URL is not configured.");
+    }
+    if (!request.config.model?.trim()) {
+      throw new Error("LLM model is not configured.");
+    }
     const apiKey = resolveCredentialApiKey(request.config.credentialRef ?? readEnvValue("DEFAULT_LLM_CREDENTIAL_REF", "LLM_CREDENTIAL_REF") ?? undefined);
 
     const timeoutMs = Number(readEnvValue("LLM_REQUEST_TIMEOUT_MS") ?? 120000);

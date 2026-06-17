@@ -8,7 +8,7 @@ Never paste API keys, passwords, cookies, or tokens into public issues or pull r
 
 - Secrets are resolved server-side
 - Frontend fields store `credentialRef`, not raw secret values
-- `credentialRef` maps to environment variables such as `OPENAI_MAIN_API_KEY`
+- `credentialRef` maps to environment variables such as `LLM_MAIN_API_KEY`
 
 ## Vulnerability Reports
 

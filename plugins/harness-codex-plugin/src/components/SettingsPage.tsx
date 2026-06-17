@@ -79,19 +79,19 @@ export default function SettingsPage({ initialValues }: SettingsPageProps) {
                   label="Model"
                   value={values.DEFAULT_LLM_MODEL}
                   onChange={(value) => setValues((current) => ({ ...current, DEFAULT_LLM_MODEL: value }))}
-                  helpText="推荐值：qwen3.6-plus。可手动修改。"
+                  helpText="填写你的 OpenAI-compatible 模型名。"
                 />
                 <SettingField
                   label="URL"
                   value={values.DEFAULT_LLM_BASE_URL}
                   onChange={(value) => setValues((current) => ({ ...current, DEFAULT_LLM_BASE_URL: value }))}
-                  helpText="推荐值：https://api.openai.com/v1。可手动修改。"
+                  helpText="填写你的 OpenAI-compatible Base URL。"
                 />
                 <SettingField
                   label="Credential Ref"
                   value={values.DEFAULT_LLM_CREDENTIAL_REF}
                   onChange={(value) => setValues((current) => ({ ...current, DEFAULT_LLM_CREDENTIAL_REF: value }))}
-                  helpText="对应服务端环境变量前缀，例如 OPENAI_MAIN。"
+                  helpText="对应服务端环境变量前缀，例如 LLM_MAIN。"
                 />
                 <SettingField
                   label="Temperature"

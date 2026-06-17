@@ -5,7 +5,7 @@ import type { CreateHarnessRequest, ModelConfig } from "shared/types";
 
 const DEFAULT_MAIN_MODEL: ModelConfig = {
   provider: "openai_compatible",
-  model: "qwen3.6-plus",
+  model: "",
   temperature: 0.2,
   maxTokens: 4096,
 };
@@ -15,7 +15,7 @@ const DEFAULT_REQUEST: CreateHarnessRequest = {
   mainModel: DEFAULT_MAIN_MODEL,
   auxiliaryModel: {
     ...DEFAULT_MAIN_MODEL,
-    model: "qwen3.6-plus",
+    model: "",
     temperature: 0.1,
     maxTokens: 2048,
   },
@@ -145,6 +145,6 @@ function StatusChip({ label, value }: { label: string; value: string }) {
 function deriveCodingAgentModel(mainModel: ModelConfig): ModelConfig {
   return {
     ...mainModel,
-    model: "qwen3-coder-plus",
+    model: "",
   };
 }

@@ -216,6 +216,6 @@ function collectArtifactsFromError(error: unknown): SpecArtifact[] {
 function deriveCodingAgentModel(mainModel: CreateHarnessRequest["mainModel"]): CreateHarnessRequest["codingAgentModel"] {
   return {
     ...mainModel,
-    model: "qwen3-coder-plus",
+    model: "",
   };
 }

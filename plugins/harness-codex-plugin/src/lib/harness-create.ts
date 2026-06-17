@@ -28,7 +28,7 @@ export async function createDemoHarness(): Promise<Harness> {
     },
     codingAgentModel: {
       ...llmSettings,
-      model: "qwen3-coder-plus",
+      model: "",
     },
     capabilityPolicy: {
       allowGithubSearch: true,

@@ -25,13 +25,13 @@ async function main(): Promise<void> {
         DATABASE_PATH: relativeWorkspacePath(DB_PATH),
         ARTIFACT_DIR: relativeWorkspacePath(ARTIFACT_DIR),
         DEFAULT_LLM_PROVIDER: "openai_compatible",
-        DEFAULT_LLM_MODEL: "qwen3.6-plus",
-        DEFAULT_LLM_BASE_URL: "https://api.openai.com/v1",
-        DEFAULT_LLM_CREDENTIAL_REF: "OPENAI_MAIN",
+        DEFAULT_LLM_MODEL: "",
+        DEFAULT_LLM_BASE_URL: "",
+        DEFAULT_LLM_CREDENTIAL_REF: "LLM_MAIN",
         DEFAULT_LLM_TEMPERATURE: "0.2",
         DEFAULT_LLM_MAX_TOKENS: "4096",
         LLM_REQUEST_TIMEOUT_MS: "120000",
-        OPENAI_MAIN_API_KEY: "demo-openai-key",
+        LLM_MAIN_API_KEY: "demo-llm-key",
         AGENT_REACH_ENABLED: "false",
         AGENT_REACH_MCPORTER_CMD: "mcporter",
         GITHUB_SEARCH_ENABLED: "false",
@@ -56,7 +56,7 @@ async function main(): Promise<void> {
     assertNonEmpty(settings.DEFAULT_LLM_PROVIDER, "settings provider is non-empty");
     assertNonEmpty(settings.DEFAULT_LLM_MODEL, "settings model is non-empty");
     assert(!Object.prototype.hasOwnProperty.call(settings, "GITHUB_PASSWORD"), "settings API does not return GitHub password");
-    for (const forbiddenSecretKey of ["OPENAI_API_KEY", "OPENAI_MAIN_API_KEY", "ANTHROPIC_API_KEY", "GITHUB_PASSWORD"]) {
+    for (const forbiddenSecretKey of ["OPENAI_API_KEY", "LLM_MAIN_API_KEY", "ANTHROPIC_API_KEY", "GITHUB_PASSWORD"]) {
       assert(!Object.prototype.hasOwnProperty.call(settings, forbiddenSecretKey), `settings API does not return ${forbiddenSecretKey}`);
     }
     const goal = "Audit a repository, explain its architecture, verify execution boundaries, and summarize artifact-driven runtime readiness.";
@@ -216,9 +216,9 @@ async function postJson<T extends JsonRecord>(url: string, body: JsonRecord): Pr
 function modelConfigFromSettings(settings: JsonRecord): JsonRecord {
   return {
     provider: String(settings.DEFAULT_LLM_PROVIDER ?? "openai_compatible"),
-    model: String(settings.DEFAULT_LLM_MODEL ?? "qwen3.6-plus"),
-    baseURL: String(settings.DEFAULT_LLM_BASE_URL ?? "https://api.openai.com/v1"),
-    credentialRef: String(settings.DEFAULT_LLM_CREDENTIAL_REF ?? "OPENAI_MAIN"),
+    model: String(settings.DEFAULT_LLM_MODEL ?? ""),
+    baseURL: String(settings.DEFAULT_LLM_BASE_URL ?? ""),
+    credentialRef: String(settings.DEFAULT_LLM_CREDENTIAL_REF ?? "LLM_MAIN"),
     temperature: Number(settings.DEFAULT_LLM_TEMPERATURE ?? 0.2),
     maxTokens: Number(settings.DEFAULT_LLM_MAX_TOKENS ?? 4096),
   };
@@ -235,7 +235,7 @@ function auxiliaryModelFromSettings(settings: JsonRecord): JsonRecord {
 function codingModelFromSettings(settings: JsonRecord): JsonRecord {
   return {
     ...modelConfigFromSettings(settings),
-    model: "qwen3-coder-plus",
+    model: "",
   };
 }
 

@@ -50,9 +50,9 @@ export function readLLMSettings(): {
 } {
   return {
     provider: readEnvValue("DEFAULT_LLM_PROVIDER", "LLM_PROVIDER") ?? "openai_compatible",
-    model: readEnvValue("DEFAULT_LLM_MODEL", "LLM_MODEL") ?? "qwen3.6-plus",
-    baseURL: readEnvValue("DEFAULT_LLM_BASE_URL", "LLM_BASE_URL") ?? "https://api.openai.com/v1",
-    credentialRef: readEnvValue("DEFAULT_LLM_CREDENTIAL_REF", "LLM_CREDENTIAL_REF") ?? "OPENAI_MAIN",
+    model: readEnvValue("DEFAULT_LLM_MODEL", "LLM_MODEL") ?? "",
+    baseURL: readEnvValue("DEFAULT_LLM_BASE_URL", "LLM_BASE_URL") ?? "",
+    credentialRef: readEnvValue("DEFAULT_LLM_CREDENTIAL_REF", "LLM_CREDENTIAL_REF") ?? "LLM_MAIN",
     temperature: readNumberEnvValue("DEFAULT_LLM_TEMPERATURE", "LLM_TEMPERATURE", 0.2),
     maxTokens: readNumberEnvValue("DEFAULT_LLM_MAX_TOKENS", "LLM_MAX_TOKENS", 4096),
   };

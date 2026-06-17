@@ -66,6 +66,6 @@ function isModelConfig(value: unknown): value is ModelConfig {
 function deriveCodingAgentModel(mainModel: ModelConfig): ModelConfig {
   return {
     ...mainModel,
-    model: "qwen3-coder-plus",
+    model: "",
   };
 }

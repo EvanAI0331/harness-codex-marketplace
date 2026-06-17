@@ -111,13 +111,13 @@ function createDefaultIntake(): RequirementIntake {
     mainModel,
     auxiliaryModel: {
       ...mainModel,
-      model: "qwen3.6-plus",
+      model: "",
       temperature: 0.1,
       maxTokens: 2048,
     },
     codingAgentModel: {
       ...mainModel,
-      model: "qwen3-coder-plus",
+      model: "",
     },
     capabilityPolicy: {
       allowGithubSearch: true,

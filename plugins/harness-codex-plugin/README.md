@@ -78,7 +78,7 @@ Copy `.env.example` to `.env` and adjust the values you need.
 Important:
 
 - `credentialRef` is a server-side pointer to a secret environment variable.
-- Example: `credentialRef=OPENAI_MAIN` means the server reads `OPENAI_MAIN_API_KEY`.
+- Example: `credentialRef=LLM_MAIN` means the server reads `LLM_MAIN_API_KEY`.
 - The browser never receives raw API keys.
 
 ### 3. Demo Mode
